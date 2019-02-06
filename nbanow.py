@@ -5,57 +5,13 @@ import json
 from datetime import datetime, timedelta
 import re
 
-def get_odds():
-    # GET ODDS FROM CBS
-    urlcbs = "https://www.cbssports.com/nba/scoreboard/"
+from get_odds import get_odds
+schedule_odds = get_odds()
 
-    rcbs = requests.get(urlcbs)
-
-    html_content = rcbs.text
-
-    soup = BeautifulSoup(html_content,"html.parser")
-
-    odds = []
-    for eachGame in soup.select('div[class*="in-progress-table"]'):
-        newodds = eachGame.get_text()
-        newodds = newodds.replace('\n\xa0',' ')
-        newodds = newodds.replace(' ',' ')
-        newodds = newodds.replace('\n',' ')
-        newodds = newodds.replace('\xa0',' ')
-        newodds = str(newodds)
-        odds.append(newodds)
-
-    final = []
-    for odd in odds:
-        new = re.sub(r'\s+', ' ', odd)
-        final.append(new)
-
-    todays_list = []
-    for boop in final[:]:
-        team0 = boop.split()
-        todays_list.append(team0)
-
-    # Create Dictionary Tree
-    # Andrew Johnson Code
-    schedule = {}
-    games = len(soup.select('div[class*="in-progress-table"]'))
-    for i in range(games):
-        gamedict = {}
-        hteamdict = {'name' : todays_list[i][3], 'record': todays_list[i][4], 'odds': todays_list[i][5]}
-        ateamdict = {'name' : todays_list[i][0], 'record': todays_list[i][1], 'odds': todays_list[i][2]}
-        gamedict['hteam'] = hteamdict
-        gamedict['ateam'] = ateamdict
-        gamestring = 'game'+str(i)
-        schedule[gamestring] = gamedict
-    return(schedule)
-    print('\n')
-
-    #retrieve odds sample
-    odds = schedule['game0']['hteam']['odds']
-    print("Odds for Timberwolves game 0: "+odds)
+from nbaTriCode_dict import nbaTriCode_dict
+triCode_dict = nbaTriCode_dict()
 
 def get_scores():
-    schedule = get_odds()
     today = datetime.strftime(datetime.now(), '%Y-%m-%d')
     today_url = datetime.strftime(datetime.now(), '%Y%m%d')
     # url = "https://data.nba.net/prod/v2/20190204/scoreboard.json"
@@ -85,7 +41,14 @@ def get_scores():
                 start = each['startTimeEastern']
                 vis_w = each['vTeam']['win']
                 vis_l = each['vTeam']['loss']
-                print('  ' + start + '\n  ' + vis + ' (' + vis_w + ' - ' + vis_l + ')')
+                # Convert name with triCode_dict
+                visitor_name = triCode_dict[vis]
+                # Get o/u from schedule_odds
+                games = len(schedule_odds)
+                for i in range(games):
+                    if schedule_odds['game'+str(i)]['vteam']['name'] == str(visitor_name):
+                        overunder =schedule_odds['game'+str(i)]['odds']['overunder']
+                        print('  ' + start + '\n  ' + vis + ' (' + vis_w + ' - ' + vis_l + ') o/u ' + overunder)
 
             if len(check_v.get('linescore')) == 1:
                 vis_q1 = each['vTeam']['linescore'][0]['score']
@@ -128,7 +91,19 @@ def get_scores():
             if len(check_h.get('linescore')) == 0:
                 h_w = each['hTeam']['win']
                 h_l = each['hTeam']['loss']
-                print('@ ' + h + ' (' + h_w + ' - ' + h_l + ')')
+                # Convert name with triCode_dict
+                home_name = triCode_dict[h]
+                # Get spread from schedule_odds
+                games = len(schedule_odds)
+                for i in range(games):
+                    if schedule_odds['game'+str(i)]['hteam']['name'] == str(home_name):
+                        spread =schedule_odds['game'+str(i)]['odds']['homespread']
+                        if float(spread) > 0:
+                            print('@ ' + h + ' (' + h_w + ' - ' + h_l + ') +'+ spread)
+                        else:
+                            print('@ ' + h + ' (' + h_w + ' - ' + h_l + ') '+ spread)
+
+
 
             if len(check_h.get('linescore')) == 1:
                 h_q1 = each['hTeam']['linescore'][0]['score']

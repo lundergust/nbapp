@@ -36,20 +36,22 @@ def get_odds():
 
     # Create Dictionary Tree
     # Andrew Johnson Code
-    schedule = {}
+    schedule_odds = {}
     games = len(soup.select('div[class*="in-progress-table"]'))
     for i in range(games):
         gamedict = {}
-        hteamdict = {'name' : todays_list[i][3], 'record': todays_list[i][4], 'odds': todays_list[i][5]}
-        ateamdict = {'name' : todays_list[i][0], 'record': todays_list[i][1], 'odds': todays_list[i][2]}
+        hteamdict = {'name' : todays_list[i][3], 'record': todays_list[i][4]}
+        vteamdict = {'name' : todays_list[i][0], 'record': todays_list[i][1]}
+        oddsdict = {'overunder': todays_list[i][2], 'homespread': todays_list[i][5]}
         gamedict['hteam'] = hteamdict
-        gamedict['ateam'] = ateamdict
+        gamedict['vteam'] = vteamdict
+        gamedict['odds'] = oddsdict
         gamestring = 'game'+str(i)
-        schedule[gamestring] = gamedict
+        schedule_odds[gamestring] = gamedict
 
-    print(schedule)
+    return(schedule_odds)
+    print(schedule_odds)
     print('\n')
-
     #retrieve odds sample
-    odds = schedule['game0']['hteam']['odds']
-    print("Odds for Timberwolves game 0: "+odds)
+    odds = schedule_odds['game0']['odds']['overunder']
+    print("o/u for Timberwolves game 0: "+odds)
