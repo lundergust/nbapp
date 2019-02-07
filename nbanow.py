@@ -17,7 +17,7 @@ def get_scores():
     # url = "https://data.nba.net/prod/v2/20190204/scoreboard.json"
     main_api = "https://data.nba.net/prod/v2/"
     url = main_api + today_url + "/scoreboard.json"
-
+    print(schedule_odds)
     json_data = requests.get(url).json()
 
     json_numGames = json_data['numGames']
@@ -98,12 +98,7 @@ def get_scores():
                 for i in range(games):
                     if schedule_odds['game'+str(i)]['hteam']['name'] == str(home_name):
                         spread =schedule_odds['game'+str(i)]['odds']['homespread']
-                        if float(spread) > 0:
-                            print('@ ' + h + ' (' + h_w + ' - ' + h_l + ') +'+ spread)
-                        else:
-                            print('@ ' + h + ' (' + h_w + ' - ' + h_l + ') '+ spread)
-
-
+                        print('@ ' + h + ' (' + h_w + ' - ' + h_l + ') '+ spread)
 
             if len(check_h.get('linescore')) == 1:
                 h_q1 = each['hTeam']['linescore'][0]['score']

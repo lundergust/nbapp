@@ -1,5 +1,4 @@
 def get_odds():
-
     import requests
     import urllib.request
     from bs4 import BeautifulSoup
@@ -17,6 +16,7 @@ def get_odds():
     odds = []
     for eachGame in soup.select('div[class*="in-progress-table"]'):
         newodds = eachGame.get_text()
+        newodds = newodds.replace('Trail Blazers','Trailblazers')
         newodds = newodds.replace('\n\xa0',' ')
         newodds = newodds.replace(' ',' ')
         newodds = newodds.replace('\n',' ')
