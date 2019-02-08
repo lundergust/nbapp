@@ -4,7 +4,7 @@ schedule_odds = get_odds()
 from nbaTriCode_dict import nbaTriCode_dict
 triCode_dict = nbaTriCode_dict()
 
-def get_scores():
+def get_scores_test():
     import requests
     import urllib.request
     from bs4 import BeautifulSoup
@@ -30,6 +30,9 @@ def get_scores():
             scoreboard_dict = {}
             live_game_number = str('game') + str(j)
             games_live_update[live_game_number] = scoreboard_dict
+            
+            vis = each['vTeam']['triCode']
+            check_v = each['vTeam']
 
             if each['isGameActivated'] == True:
                 if each['period']['isHalftime'] == True:
@@ -40,7 +43,14 @@ def get_scores():
                     quarter = str(each['period']['current'])
                     current_clock = str(game_clock + '  Q' + quarter)
                     scoreboard_dict['clock'] = current_clock
-
+                    
+            if each['isGameActivated'] == False:
+            	if len(check_v.get('linescore')) == 0:
+            		continue
+            	else:
+            		game_over = str('Final')
+            		scoreboard_dict['clock'] = game_over
+            			
             vis = each['vTeam']['triCode']
             check_v = each['vTeam']
             if len(check_v.get('linescore')) == 0:
@@ -149,8 +159,9 @@ def get_scores():
                     + each['nugget']['text'])
             j+=1
         footer = str('------------------------------')
-
+        
         return header, games_live_update, footer
+        
 
 if __name__ == "__main__":
-    get_scores()
+    get_scores_test()
