@@ -14,7 +14,6 @@
 		D715C25F220DECA800E60E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D715C25D220DECA800E60E9B /* LaunchScreen.storyboard */; };
 		D715C26A220DECA800E60E9B /* nbaScoresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715C269220DECA800E60E9B /* nbaScoresTests.swift */; };
 		D715C275220DECA800E60E9B /* nbaScoresUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715C274220DECA800E60E9B /* nbaScoresUITests.swift */; };
-		D715C29B220E178900E60E9B /* get_odds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D715C29A220E178900E60E9B /* get_odds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +47,6 @@
 		D715C270220DECA800E60E9B /* nbaScoresUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nbaScoresUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D715C274220DECA800E60E9B /* nbaScoresUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nbaScoresUITests.swift; sourceTree = "<group>"; };
 		D715C276220DECA800E60E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D715C29A220E178900E60E9B /* get_odds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_odds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +77,6 @@
 		D715C248220DECA600E60E9B = {
 			isa = PBXGroup;
 			children = (
-				D715C29A220E178900E60E9B /* get_odds.swift */,
 				D715C253220DECA600E60E9B /* nbaScores */,
 				D715C268220DECA800E60E9B /* nbaScoresTests */,
 				D715C273220DECA800E60E9B /* nbaScoresUITests */,
@@ -259,7 +256,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D715C29B220E178900E60E9B /* get_odds.swift in Sources */,
 				D715C257220DECA600E60E9B /* ViewController.swift in Sources */,
 				D715C255220DECA600E60E9B /* AppDelegate.swift in Sources */,
 			);

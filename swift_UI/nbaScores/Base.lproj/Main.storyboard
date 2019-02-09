@@ -46,7 +46,7 @@
                                         <rect key="frame" x="168" y="25" width="79" height="196"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="aaaasskkskskkskkskksks" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oaV-KW-tbd">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is where the scores go." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oaV-KW-tbd">
                                         <rect key="frame" x="8" y="-776" width="398" height="658"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
