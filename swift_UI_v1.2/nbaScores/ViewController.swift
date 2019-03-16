@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScoresDataKit
 
 class ViewController: UIViewController {
     
