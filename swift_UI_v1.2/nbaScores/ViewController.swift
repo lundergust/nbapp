@@ -118,9 +118,6 @@ class ViewController: UIViewController {
         
         
         
-        
-        
-        
         scores_page.isHidden = false
         gray_bg.isHidden = true
         start_button.isHidden = true
