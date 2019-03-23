@@ -13,6 +13,9 @@ class yesterdayViewController: UIViewController {
 
     @IBOutlet var yesterday_scores_page: UIView!
     @IBOutlet weak var yesterday_scores_output: UITextView!
+    @IBOutlet weak var yesterday_label: UILabel!
+    @IBOutlet weak var yesterday_games_label: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +58,16 @@ class yesterdayViewController: UIViewController {
             do {
                 var scores_text: [String] = []
                 let header: String = "-------------------------------------"
-                scores_text.append(header)
                 let thing = try JSONDecoder().decode(Scores.self, from: data)
                 print(thing.games)
                 
                 if thing.numGames > 0 {
                     
-                    let text1 = ("NBA Action From " + String(year) + "-" + String(new_month) + "-" +  String(new_day) + "\nNumber of games today: " + String(thing.numGames))
+                    let yesterday_text1 = (String(new_month) + "-" + String(new_day))
+                    let yesterday_text2 = "Number of games: " + String(thing.numGames)
                     
-                    scores_text.append(text1)
+                    DispatchQueue.main.async {self.yesterday_label.text = "Yesterday: " + yesterday_text1}
+                    DispatchQueue.main.async {self.yesterday_games_label.text = yesterday_text2}
                     
                     for game in thing.games {
                         scores_text.append(header)
@@ -80,7 +84,7 @@ class yesterdayViewController: UIViewController {
                             scores_text.append("@ " + game.hTeam.triCode + " " + game.hTeam.score + " | " + game.hTeam.linescore[0].score + " | " + game.hTeam.linescore[1].score + " | " + game.hTeam.linescore[2].score + " | " + game.hTeam.linescore[3].score)
                             
                         } else {
-                            if game.period.current == 4 {
+                            if game.period.current >= 4 {
                                 scores_text.append("    Final")
                                 scores_text.append("    " + game.vTeam.triCode + " " + game.vTeam.score + " | " + game.vTeam.linescore[0].score + " | " + game.vTeam.linescore[1].score + " | " + game.vTeam.linescore[2].score + " | " + game.vTeam.linescore[3].score)
                                 scores_text.append("@ " + game.hTeam.triCode + " " + game.hTeam.score + " | " + game.hTeam.linescore[0].score + " | " + game.hTeam.linescore[1].score + " | " + game.hTeam.linescore[2].score + " | " + game.hTeam.linescore[3].score)
@@ -97,7 +101,7 @@ class yesterdayViewController: UIViewController {
                     scores_text.append(header)
                     
                 } else {
-                    scores_text.append("There are no games today :(")
+                    scores_text.append("There were no games yesterday :(")
                 }
                 let stringRepresentation = scores_text.joined(separator: "\n")
                 DispatchQueue.main.async {self.yesterday_scores_output.text = String(stringRepresentation)}

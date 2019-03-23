@@ -9,7 +9,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newVc(viewController: "today"),
-                self.newVc(viewController: "yesterday")]
+                self.newVc(viewController: "yesterday"),
+                self.newVc(viewController: "test")]
     }()
     
     override func viewDidLoad() {
@@ -65,9 +66,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         // User is on the first view controller and swiped left to loop to
         // the last view controller.
         guard previousIndex >= 0 else {
-            return orderedViewControllers.last
+//            return orderedViewControllers.last
             // Uncommment the line below, remove the line above if you don't want the page control to loop.
-            // return nil
+             return nil
         }
         
         guard orderedViewControllers.count > previousIndex else {
@@ -88,9 +89,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         // User is on the last view controller and swiped right to loop to
         // the first view controller.
         guard orderedViewControllersCount != nextIndex else {
-            return orderedViewControllers.first
+//            return orderedViewControllers.first
             // Uncommment the line below, remove the line above if you don't want the page control to loop.
-            // return nil
+             return nil
         }
         
         guard orderedViewControllersCount > nextIndex else {

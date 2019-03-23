@@ -13,6 +13,8 @@ class todayViewController: UIViewController {
 
     @IBOutlet var today_scores_page: UIView!
     @IBOutlet weak var today_scores_output: UITextView!
+    @IBOutlet weak var today_label: UILabel!
+    @IBOutlet weak var today_games_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +57,19 @@ class todayViewController: UIViewController {
             do {
                 var scores_text: [String] = []
                 let header: String = "-------------------------------------"
-                scores_text.append(header)
                 let thing = try JSONDecoder().decode(Scores.self, from: data)
                 print(thing.games)
                 
                 if thing.numGames > 0 {
                     
-                    let text1 = ("NBA Action From " + String(year) + "-" + String(new_month) + "-" +  String(new_day) + "\nNumber of games today: " + String(thing.numGames))
+                    let today_text1 = (String(new_month) + "-" + String(new_day))
+                    let today_text2 = "Number of games today: " + String(thing.numGames)
                     
-                    scores_text.append(text1)
+                    DispatchQueue.main.async {self.today_label.text = "Today: " + today_text1}
+                    DispatchQueue.main.async {self.today_games_label.text = today_text2}
+                    
+                    
+
                     
                     for game in thing.games {
                         scores_text.append(header)
@@ -80,7 +86,7 @@ class todayViewController: UIViewController {
                             scores_text.append("@ " + game.hTeam.triCode + " " + game.hTeam.score + " | " + game.hTeam.linescore[0].score + " | " + game.hTeam.linescore[1].score + " | " + game.hTeam.linescore[2].score + " | " + game.hTeam.linescore[3].score)
                             
                         } else {
-                            if game.period.current == 4 {
+                            if game.period.current >= 4 {
                                 scores_text.append("    Final")
                                 scores_text.append("    " + game.vTeam.triCode + " " + game.vTeam.score + " | " + game.vTeam.linescore[0].score + " | " + game.vTeam.linescore[1].score + " | " + game.vTeam.linescore[2].score + " | " + game.vTeam.linescore[3].score)
                                 scores_text.append("@ " + game.hTeam.triCode + " " + game.hTeam.score + " | " + game.hTeam.linescore[0].score + " | " + game.hTeam.linescore[1].score + " | " + game.hTeam.linescore[2].score + " | " + game.hTeam.linescore[3].score)
