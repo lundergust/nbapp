@@ -10,6 +10,7 @@
 		0F4E08912242B865002B9A59 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E08902242B865002B9A59 /* PageViewController.swift */; };
 		0F4E08B72242C0F1002B9A59 /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E08B62242C0F1002B9A59 /* Scores.swift */; };
 		0F4E08BB2242C280002B9A59 /* yesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E08BA2242C280002B9A59 /* yesterdayViewController.swift */; };
+		0F51AA3F2248419F00B18DD6 /* testTodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F51AA3E2248419F00B18DD6 /* testTodayViewController.swift */; };
 		0FB1C1392245453300118626 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB1C1382245453300118626 /* testViewController.swift */; };
 		0FDC40EC2242B75A00045020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC40EB2242B75A00045020 /* AppDelegate.swift */; };
 		0FDC40EE2242B75A00045020 /* todayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDC40ED2242B75A00045020 /* todayViewController.swift */; };
@@ -41,6 +42,7 @@
 		0F4E08902242B865002B9A59 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		0F4E08B62242C0F1002B9A59 /* Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scores.swift; sourceTree = "<group>"; };
 		0F4E08BA2242C280002B9A59 /* yesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yesterdayViewController.swift; sourceTree = "<group>"; };
+		0F51AA3E2248419F00B18DD6 /* testTodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTodayViewController.swift; sourceTree = "<group>"; };
 		0FB1C1382245453300118626 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		0FDC40E82242B75A00045020 /* test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FDC40EB2242B75A00045020 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				0F4E08BA2242C280002B9A59 /* yesterdayViewController.swift */,
 				0FDC40EF2242B75A00045020 /* Main.storyboard */,
 				0FB1C1382245453300118626 /* testViewController.swift */,
+				0F51AA3E2248419F00B18DD6 /* testTodayViewController.swift */,
 				0F4E08B62242C0F1002B9A59 /* Scores.swift */,
 				0F4E08902242B865002B9A59 /* PageViewController.swift */,
 				0FDC40F22242B75B00045020 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 			files = (
 				0FB1C1392245453300118626 /* testViewController.swift in Sources */,
 				0F4E08912242B865002B9A59 /* PageViewController.swift in Sources */,
+				0F51AA3F2248419F00B18DD6 /* testTodayViewController.swift in Sources */,
 				0FDC40EE2242B75A00045020 /* todayViewController.swift in Sources */,
 				0F4E08B72242C0F1002B9A59 /* Scores.swift in Sources */,
 				0FDC40EC2242B75A00045020 /* AppDelegate.swift in Sources */,

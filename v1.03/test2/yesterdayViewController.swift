@@ -51,15 +51,13 @@ class yesterdayViewController: UIViewController {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                print("\n decode attempt")
+            
             } catch {}
             
             do {
                 var scores_text: [String] = []
                 let header: String = "-------------------------------------"
                 let thing = try JSONDecoder().decode(Scores.self, from: data)
-                print(thing.games)
                 
                 if thing.numGames > 0 {
                     

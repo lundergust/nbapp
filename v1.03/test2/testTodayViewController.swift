@@ -8,15 +8,10 @@
 
 import UIKit
 
-class testViewController: UIViewController {
+class testTodayViewController: UIViewController {
     
     
-
-
-    @IBOutlet var todayMain: UIView!
-    @IBOutlet weak var todayScroll: UIScrollView!
-    @IBOutlet weak var todayView: UIView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var test_games_label: UILabel!
     @IBOutlet weak var test_label: UILabel!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
@@ -161,7 +156,7 @@ class testViewController: UIViewController {
         let calendar = Calendar.current
         let year: Int = calendar.component(.year, from: date)
         var month: Int = calendar.component(.month, from: date)
-        var day: Int = calendar.component(.day, from: date) - 1
+        var day: Int = calendar.component(.day, from: date)
         let new_day: String
         let new_month: String
         let todays_url: String
@@ -190,22 +185,22 @@ class testViewController: UIViewController {
             } catch {}
             
             do {
-
+            
                 let thing = try JSONDecoder().decode(Scores.self, from: data)
                 
                 if thing.numGames > 0 {
-
+                    
                     let test_text1 = (String(new_month) + "-" + String(new_day))
                     let test_text2 = "Number of games: " + String(thing.numGames)
                     
-                    DispatchQueue.main.async {self.test_label.text = "Yesterday: " + test_text1}
+                    DispatchQueue.main.async {self.test_label.text = "Today: " + test_text1}
                     DispatchQueue.main.async {self.test_games_label.text = test_text2}
-                
+                    
                     // Game 1
                     var isIndexValid = thing.games.indices.contains(0)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team1.text = thing.games[0].vTeam.triCode}
@@ -231,7 +226,7 @@ class testViewController: UIViewController {
                         } else {
                             if thing.games[0].period.current >= 4 {
                                 DispatchQueue.main.async {self.clock1.text = "Final"}
-
+                                
                             } else if thing.games[0].period.current == 0 {
                                 DispatchQueue.main.async {self.clock1.text = thing.games[0].startTimeEastern}
                             }
@@ -253,7 +248,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(1)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team3.text = thing.games[1].vTeam.triCode}
@@ -300,7 +295,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(2)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team5.text = thing.games[2].vTeam.triCode}
@@ -347,7 +342,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(3)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team7.text = thing.games[3].vTeam.triCode}
@@ -394,7 +389,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(4)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team9.text = thing.games[4].vTeam.triCode}
@@ -441,7 +436,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(5)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:800)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:800)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team11.text = thing.games[5].vTeam.triCode}
@@ -488,7 +483,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(6)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:950)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:950)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team13.text = thing.games[6].vTeam.triCode}
@@ -535,7 +530,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(7)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1050)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1050)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team15.text = thing.games[7].vTeam.triCode}
@@ -582,7 +577,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(8)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1160)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1160)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team17.text = thing.games[8].vTeam.triCode}
@@ -629,7 +624,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(9)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1280)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1280)}
                         
                         // set teams
                         DispatchQueue.main.async {self.team19.text = thing.games[9].vTeam.triCode}
@@ -676,7 +671,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(10)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1400)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1400)}
                         // set teams
                         DispatchQueue.main.async {self.team21.text = thing.games[10].vTeam.triCode}
                         DispatchQueue.main.async {self.team22.text = thing.games[10].hTeam.triCode}
@@ -722,7 +717,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(11)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1520)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1520)}
                         // set teams
                         DispatchQueue.main.async {self.team23.text = thing.games[11].vTeam.triCode}
                         DispatchQueue.main.async {self.team24.text = thing.games[11].hTeam.triCode}
@@ -768,7 +763,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(12)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1640)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1640)}
                         // set teams
                         DispatchQueue.main.async {self.team25.text = thing.games[12].vTeam.triCode}
                         DispatchQueue.main.async {self.team26.text = thing.games[12].hTeam.triCode}
@@ -814,7 +809,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(13)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1760)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1760)}
                         // set teams
                         DispatchQueue.main.async {self.team27.text = thing.games[13].vTeam.triCode}
                         DispatchQueue.main.async {self.team28.text = thing.games[13].hTeam.triCode}
@@ -860,7 +855,7 @@ class testViewController: UIViewController {
                     isIndexValid = thing.games.indices.contains(14)
                     if isIndexValid == true {
                         // limit scroll
-                        DispatchQueue.main.async {self.todayScroll.contentSize = CGSize(width:414, height:1880)}
+                        DispatchQueue.main.async {self.scrollView.contentSize = CGSize(width:414, height:1880)}
                         // set teams
                         DispatchQueue.main.async {self.team29.text = thing.games[14].vTeam.triCode}
                         DispatchQueue.main.async {self.team30.text = thing.games[14].hTeam.triCode}
@@ -913,7 +908,7 @@ class testViewController: UIViewController {
         
     }
     
-
+    
     
 }
 

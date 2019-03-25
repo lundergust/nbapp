@@ -8,9 +8,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     // MARK: UIPageViewControllerDataSource
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newVc(viewController: "today"),
-                self.newVc(viewController: "yesterday"),
-                self.newVc(viewController: "test")]
+        return [self.newVc(viewController: "test"),
+                self.newVc(viewController: "testToday")]
     }()
     
     override func viewDidLoad() {
