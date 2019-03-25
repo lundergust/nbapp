@@ -11,6 +11,8 @@ import UIKit
 class testTodayViewController: UIViewController {
     
     
+ 
+    @IBOutlet var mainView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var test_games_label: UILabel!
     @IBOutlet weak var test_label: UILabel!
@@ -146,11 +148,39 @@ class testTodayViewController: UIViewController {
     @IBOutlet weak var nugget14: UILabel!
     @IBOutlet weak var nugget15: UILabel!
     
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        populate()
+//        configureRefreshControl()
+    }
+    
+    @IBAction func refreshButton(_ sender: Any) {
+        populate()
+    }
+    
+//    func configureRefreshControl() {
+//        // Add the refresh control to your UIScrollView object.
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refreshControl.tintColor = UIColor.white
+//        refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
+//        self.scrollView.refreshControl = refreshControl
+////        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+//    }
+//
+//    @objc func update() {
+//        populate()
+//    }
+//
+//    @objc func refresh(_ refreshControl: UIRefreshControl) {
+//        DispatchQueue.main.async {self.clock1.text = "hello"}
+//
+//        self.scrollView.refreshControl?.endRefreshing()
+//    }
+    
+    func populate() {
         
         let date = Date()
         let calendar = Calendar.current
@@ -182,6 +212,7 @@ class testTodayViewController: UIViewController {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
+                
             } catch {}
             
             do {
